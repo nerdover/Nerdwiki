@@ -1,0 +1,81 @@
+<div class="grid grid-cols-2 sticky top-0">
+  <div
+    role="button"
+    (click)="toLessonsTab()"
+    class="border-b-4 text-center p-2 border-secondary text-secondary font-semibold"
+    [ngClass]="
+      currentTab === CategoryTab.Lessons ? 'opacity-100' : 'opacity-50'
+    "
+  >
+    Lesson
+  </div>
+  <div
+    role="button"
+    (click)="toSeriesTab()"
+    class="border-b-4 text-center p-2 border-secondary text-secondary font-semibold"
+    [ngClass]="currentTab === CategoryTab.Series ? 'opacity-100' : 'opacity-50'"
+  >
+    Series
+  </div>
+</div>
+@if (currentTab === CategoryTab.Lessons) {
+<div class="p-4">
+  <div class="grid grid-cols-1 gap-4">
+    @for (lesson of lessons; track $index) {
+    <div
+      role="button"
+      [routerLink]="['/categories', lesson.categoryId, 'lessons', lesson.id]"
+      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+    >
+      <div class="absolute top-0 left-0 w-full h-full">
+        <img
+          class="w-full h-full object-cover object-center"
+          [src]="'api/uploads/' + lesson.cover"
+          [alt]="lesson.title"
+        />
+      </div>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+      >
+        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+          {{ lesson.title }}
+        </p>
+      </div>
+    </div>
+    } @empty {
+    <p class="text-center text-xl font-bold text-tertiary">No lessons found.</p>
+    }
+  </div>
+</div>
+} @if (currentTab === CategoryTab.Series) {
+<div class="p-4">
+  <div class="grid grid-cols-1 gap-4">
+    @for (s of series; track $index) {
+    <div
+      role="button"
+      [routerLink]="['/categories', s.categoryId, 'series', s.id]"
+      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+    >
+      <div class="absolute top-0 left-0 w-full h-full">
+        @if (s.cover) {
+        <img
+          class="w-full h-full object-cover object-center"
+          [src]="'api/uploads/' + s.cover"
+          [alt]="s.title"
+        />
+        }
+      </div>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+      >
+        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+          {{ s.title }}
+        </p>
+      </div>
+    </div>
+    } @empty {
+    <p class="text-center text-xl font-bold text-tertiary">No series found.</p>
+    }
+  </div>
+</div>
+}

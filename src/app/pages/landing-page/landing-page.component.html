@@ -1,0 +1,41 @@
+<div>
+  <div class="hide-scrollbar flex flex-nowrap gap-4 overflow-auto snap-x p-4">
+    @for (category of repo.categories(); track $index) {
+    <div
+      class="shrink-0 w-64 h-48 snap-center rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+    >
+      <div class="absolute top-0 left-0 w-full h-full">
+        <img
+          class="w-full h-full object-cover object-center"
+          [src]="'api/uploads/' + category.cover"
+          [alt]="category.title"
+        />
+      </div>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+      >
+        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+          {{ category.title }}
+        </p>
+      </div>
+    </div>
+    } @if (repo.categories()) {
+    <div
+      class="shrink-0 w-64 h-48 snap-center flex justify-center items-center"
+    >
+      <button class="flex items-center gap-2 font-semibold">
+        All Categories
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -960 960 960"
+          class="size-6 fill-current"
+        >
+          <path
+            d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"
+          />
+        </svg>
+      </button>
+    </div>
+    }
+  </div>
+</div>

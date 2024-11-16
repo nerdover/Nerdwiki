@@ -1,0 +1,29 @@
+@if (seriesLesson && seriesLesson.cover) {
+<div class="h-dvh relative">
+  <div class="absolute top-0 left-0 w-full h-full">
+    <img
+      [src]="'/api/uploads/' + seriesLesson.cover"
+      class="w-full h-full object-cover object-center"
+    />
+  </div>
+  <div
+    class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-gradient-to-b from-primary/75 to-primary/0"
+  >
+    <div>
+      <h1 class="text-2xl font-bold text-on-primary drop-shadow">
+        {{ seriesLesson.title }}
+      </h1>
+      <p class="text-sm font-semibold text-on-primary drop-shadow">
+        <!-- {{seriesLesson.}} -->
+      </p>
+    </div>
+  </div>
+</div>
+} @if (seriesLesson && seriesLesson.content) {
+<nwk-content-view [content]="seriesLesson.content" />
+} @else {
+<p class="text-center text-xl font-bold text-on-primary drop-shadow">
+  No content found.
+</p>
+
+}

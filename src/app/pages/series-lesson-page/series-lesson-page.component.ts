@@ -3,6 +3,7 @@ import { Lesson } from '../../core/models/lesson';
 import { ContentService } from '../../core/services/content.service';
 import { SeriesLesson } from '../../core/models/series-lesson';
 import { ContentViewComponent } from "../../components/content-view/content-view.component";
+import { getColorScheme } from '../../core/themes/theme-generator';
 
 @Component({
   selector: 'nwk-series-lesson-page',
@@ -28,6 +29,9 @@ export class SeriesLessonPageComponent {
       .getSeriesLessonById(this.seriesLessonId, this.seriesId, this.categoryId)
       .subscribe((seriesLesson) => {
         this.seriesLesson = seriesLesson;
+        if (this.seriesLesson?.hex) {
+          getColorScheme(this.seriesLesson.hex);
+        }
       });
   }
 }

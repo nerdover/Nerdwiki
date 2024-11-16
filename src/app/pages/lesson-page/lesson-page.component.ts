@@ -2,6 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { ContentViewComponent } from '../../components/content-view/content-view.component';
 import { ContentService } from '../../core/services/content.service';
 import { Lesson } from '../../core/models/lesson';
+import { getColorScheme } from '../../core/themes/theme-generator';
 
 @Component({
   selector: 'nwk-lesson-page',
@@ -26,6 +27,9 @@ export class LessonPageComponent implements OnInit {
       .getLessonById(this.lessonId, this.categoryId)
       .subscribe((lesson) => {
         this.lesson = lesson;
+        if (this.lesson?.hex) {
+          getColorScheme(this.lesson.hex);
+        }
       });
   }
 }

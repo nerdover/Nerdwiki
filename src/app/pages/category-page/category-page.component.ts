@@ -4,6 +4,8 @@ import { Lesson } from '../../core/models/lesson';
 import { Series } from '../../core/models/series';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Category } from '../../core/models/category';
+import { getColorScheme } from '../../core/themes/theme-generator';
 
 enum CategoryTab {
   Lessons = 'Lessons',
@@ -28,6 +30,7 @@ export class CategoryPageComponent implements OnInit {
     return CategoryTab;
   }
 
+  category?: Category;
   lessons?: Lesson[];
   series?: Series[];
 
@@ -35,6 +38,14 @@ export class CategoryPageComponent implements OnInit {
     if (!this.categoryId) {
       return;
     }
+
+    this.repo.getCategoryById(this.categoryId).subscribe((category) => {
+      this.category = category;
+      if (this.category?.hex) {
+        getColorScheme(this.category.hex);
+      }
+    });
+
     this.repo.getLessonsInCategory(this.categoryId).subscribe((lessons) => {
       this.lessons = lessons;
     });

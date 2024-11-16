@@ -1,3 +1,11 @@
+@if (category && category.cover) {
+<div class="h-48">
+  <img
+    [src]="'api/uploads/' + category.cover"
+    class="w-full h-full object-cover object-center"
+  />
+</div>
+}
 <div class="grid grid-cols-2 sticky top-0">
   <div
     role="button"

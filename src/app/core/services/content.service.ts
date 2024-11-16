@@ -13,32 +13,10 @@ import { SeriesLesson } from '../models/series-lesson';
 export class ContentService {
   private readonly http = inject(HttpClient);
 
-  loadCategories() {
-    this.getCategories().subscribe((categories) =>
-      this.categories.set(categories)
-    );
-  }
-  loadLessons() {
-    this.getLessons().subscribe((lessons) => this.lessons.set(lessons));
-  }
-  loadSeries() {
-    this.getSeries().subscribe((series) => this.series.set(series));
-  }
-  loadSeriesLessons() {
-    this.getSeriesLessons().subscribe((seriesLessons) =>
-      this.seriesLessons.set(seriesLessons)
-    );
-  }
-
   private readonly _category_url = '/api/categories';
   private readonly _lessons_url = '/api/lessons';
   private readonly _series_url = '/api/series';
   private readonly _series_lessons_url = '/api/serieslessons';
-
-  categories = signal<Category[] | undefined>(undefined);
-  lessons = signal<Lesson[] | undefined>(undefined);
-  series = signal<Series[] | undefined>(undefined);
-  seriesLessons = signal<SeriesLesson[] | undefined>(undefined);
 
   getCategories = () =>
     this.http

@@ -1,5 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { ContentService } from '../../core/services/content.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Lesson } from '../../core/models/lesson';
 import { Series } from '../../core/models/series';
 import { NgClass } from '@angular/common';
@@ -20,39 +19,20 @@ enum CategoryTab {
   styleUrl: './category-page.component.scss',
 })
 export class CategoryPageComponent implements OnInit {
-  readonly repo = inject(ContentService);
-
-  @Input() categoryId?: string;
-
   currentTab = CategoryTab.Lessons;
 
   get CategoryTab() {
     return CategoryTab;
   }
 
-  category?: Category;
-  lessons?: Lesson[];
-  series?: Series[];
+  @Input() category?: Category;
+  @Input() lessons?: Lesson[];
+  @Input() series?: Series[];
 
   ngOnInit(): void {
-    if (!this.categoryId) {
-      return;
+    if (this.category?.hex) {
+      getColorScheme(this.category.hex);
     }
-
-    this.repo.getCategoryById(this.categoryId).subscribe((category) => {
-      this.category = category;
-      if (this.category?.hex) {
-        getColorScheme(this.category.hex);
-      }
-    });
-
-    this.repo.getLessonsInCategory(this.categoryId).subscribe((lessons) => {
-      this.lessons = lessons;
-    });
-
-    this.repo.getSeriesInCategory(this.categoryId).subscribe((series) => {
-      this.series = series;
-    });
   }
 
   toLessonsTab() {

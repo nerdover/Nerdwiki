@@ -1,6 +1,5 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ContentViewComponent } from '../../components/content-view/content-view.component';
-import { ContentService } from '../../core/services/content.service';
 import { Lesson } from '../../core/models/lesson';
 import { getColorScheme } from '../../core/themes/theme-generator';
 
@@ -12,24 +11,11 @@ import { getColorScheme } from '../../core/themes/theme-generator';
   styleUrl: './lesson-page.component.scss',
 })
 export class LessonPageComponent implements OnInit {
-  private readonly repo = inject(ContentService);
-
-  @Input() categoryId?: string;
-  @Input() lessonId?: string;
-
-  lesson?: Lesson;
+  @Input() lesson?: Lesson;
 
   ngOnInit(): void {
-    if (!this.categoryId || !this.lessonId) {
-      return;
+    if (this.lesson?.hex) {
+      getColorScheme(this.lesson.hex);
     }
-    this.repo
-      .getLessonById(this.lessonId, this.categoryId)
-      .subscribe((lesson) => {
-        this.lesson = lesson;
-        if (this.lesson?.hex) {
-          getColorScheme(this.lesson.hex);
-        }
-      });
   }
 }

@@ -1,5 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { ContentService } from '../../core/services/content.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { SeriesLesson } from '../../core/models/series-lesson';
 import { RouterLink } from '@angular/router';
 import { Series } from '../../core/models/series';
@@ -13,32 +12,12 @@ import { getColorScheme } from '../../core/themes/theme-generator';
   styleUrl: './series-page.component.scss',
 })
 export class SeriesPageComponent implements OnInit {
-  private readonly repo = inject(ContentService);
-
-  @Input() categoryId?: string;
-  @Input() seriesId?: string;
-
-  series?: Series;
-  seriesLessons?: SeriesLesson[];
+  @Input() series?: Series;
+  @Input() seriesLessons?: SeriesLesson[];
 
   ngOnInit(): void {
-    if (!this.categoryId || !this.seriesId) {
-      return;
+    if (this.series?.hex) {
+      getColorScheme(this.series.hex);
     }
-
-    this.repo
-      .getSeriesById(this.seriesId, this.categoryId)
-      .subscribe((series) => {
-        this.series = series;
-        if (this.series?.hex) {
-          getColorScheme(this.series.hex);
-        }
-      });
-
-    this.repo
-      .getSeriesLessonsInSeries(this.seriesId, this.categoryId)
-      .subscribe((seriesLessons) => {
-        this.seriesLessons = seriesLessons;
-      });
   }
 }

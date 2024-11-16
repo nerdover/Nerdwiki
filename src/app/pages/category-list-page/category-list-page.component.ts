@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { ContentService } from '../../core/services/content.service';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Category } from '../../core/models/category';
 
 @Component({
   selector: 'nwk-category-list-page',
@@ -10,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './category-list-page.component.scss',
 })
 export class CategoryListPageComponent {
-  readonly repo = inject(ContentService);
+  @Input() categories?: Category[];
 }

@@ -1,8 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
-import { Lesson } from '../../core/models/lesson';
-import { ContentService } from '../../core/services/content.service';
+import { Component, Input } from '@angular/core';
 import { SeriesLesson } from '../../core/models/series-lesson';
-import { ContentViewComponent } from "../../components/content-view/content-view.component";
+import { ContentViewComponent } from '../../components/content-view/content-view.component';
 import { getColorScheme } from '../../core/themes/theme-generator';
 
 @Component({
@@ -13,25 +11,11 @@ import { getColorScheme } from '../../core/themes/theme-generator';
   styleUrl: './series-lesson-page.component.scss',
 })
 export class SeriesLessonPageComponent {
-  private readonly repo = inject(ContentService);
-
-  @Input() categoryId?: string;
-  @Input() seriesId?: string;
-  @Input() seriesLessonId?: string;
-
-  seriesLesson?: SeriesLesson;
+  @Input() seriesLesson?: SeriesLesson;
 
   ngOnInit(): void {
-    if (!this.categoryId || !this.seriesId || !this.seriesLessonId) {
-      return;
+    if (this.seriesLesson?.hex) {
+      getColorScheme(this.seriesLesson.hex);
     }
-    this.repo
-      .getSeriesLessonById(this.seriesLessonId, this.seriesId, this.categoryId)
-      .subscribe((seriesLesson) => {
-        this.seriesLesson = seriesLesson;
-        if (this.seriesLesson?.hex) {
-          getColorScheme(this.seriesLesson.hex);
-        }
-      });
   }
 }

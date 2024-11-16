@@ -1,6 +1,6 @@
 <div>
   <div class="hide-scrollbar flex flex-nowrap gap-4 overflow-auto snap-x p-4">
-    @for (category of repo.categories(); track $index) {
+    @for (category of categories; track $index) {
     <div
       class="shrink-0 w-64 h-48 snap-center rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
     >
@@ -19,7 +19,7 @@
         </p>
       </div>
     </div>
-    } @if (repo.categories()) {
+    } @if (categories) {
     <div
       class="shrink-0 w-64 h-48 snap-center flex justify-center items-center"
     >

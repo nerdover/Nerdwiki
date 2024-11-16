@@ -4,6 +4,7 @@ import { Traceable } from './base/traceable';
 
 export interface Lesson extends Identifiable, Traceable, Extension {
   categoryId: string;
+  categoryTitle: string;
   content?: string;
 }
 

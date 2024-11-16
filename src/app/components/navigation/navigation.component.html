@@ -1,4 +1,10 @@
-<nav class="fixed top-0 left-0 w-full h-16 bg-surface z-40">
+<nav
+  class="fixed left-0 w-full h-16 z-40 transition-all backdrop-blur-sm"
+  [ngClass]="[
+    show ? 'top-0 opacity-100 visible' : '-top-16 opacity-0 invisible',
+    transparent ? 'bg-primary/60 text-on-primary' : 'bg-surface'
+  ]"
+>
   <div class="flex justify-between items-center gap-4 p-4">
     <p class="text-2xl font-comfortaa font-bold">nerdwiki</p>
     <button (click)="openMenuAndLockBody()">

@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Switch } from '../../shared/utils/switch';
 import { fade } from '../../shared/animations/fade';
 import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'nwk-navigation',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
   animations: [fade],
 })
 export class NavigationComponent {
+  @Input() transparent: boolean = false
+  @Input() show: boolean = true;
+
   menuPanel = new Switch();
 
   menu = [

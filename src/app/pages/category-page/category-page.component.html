@@ -6,29 +6,27 @@
   />
 </div>
 }
-<div class="grid grid-cols-2 sticky top-0">
-  <div
-    role="button"
+<div class="flex items-center gap-2 p-4">
+  <button
     (click)="toLessonsTab()"
-    class="border-b-4 text-center p-2 border-secondary text-secondary font-semibold"
+    class="flex items-center px-4 py-2 rounded-full bg-secondary text-on-secondary font-semibold"
     [ngClass]="
       currentTab === CategoryTab.Lessons ? 'opacity-100' : 'opacity-50'
     "
   >
     Lesson
-  </div>
-  <div
-    role="button"
+  </button>
+  <button
     (click)="toSeriesTab()"
-    class="border-b-4 text-center p-2 border-secondary text-secondary font-semibold"
+    class="flex items-center px-4 py-2 rounded-full bg-secondary text-on-secondary font-semibold"
     [ngClass]="currentTab === CategoryTab.Series ? 'opacity-100' : 'opacity-50'"
   >
     Series
-  </div>
+  </button>
 </div>
 @if (currentTab === CategoryTab.Lessons) {
 <div class="p-4">
-  <div class="grid grid-cols-1 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     @for (lesson of lessons; track $index) {
     <div
       role="button"
@@ -45,19 +43,23 @@
       <div
         class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+        <p class="text-2xl font-bold text-on-primary drop-shadow">
           {{ lesson.title }}
         </p>
       </div>
     </div>
     } @empty {
-    <p class="text-center text-xl font-bold text-tertiary">No lessons found.</p>
+    <p
+      class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-xl font-bold text-primary"
+    >
+      No lesson found.
+    </p>
     }
   </div>
 </div>
 } @if (currentTab === CategoryTab.Series) {
 <div class="p-4">
-  <div class="grid grid-cols-1 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     @for (s of series; track $index) {
     <div
       role="button"
@@ -76,13 +78,17 @@
       <div
         class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+        <p class="text-2xl font-bold text-on-primary drop-shadow">
           {{ s.title }}
         </p>
       </div>
     </div>
     } @empty {
-    <p class="text-center text-xl font-bold text-tertiary">No series found.</p>
+    <p
+      class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-xl font-bold text-primary"
+    >
+      No series found.
+    </p>
     }
   </div>
 </div>

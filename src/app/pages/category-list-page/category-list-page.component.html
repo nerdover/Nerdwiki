@@ -18,9 +18,8 @@
 </div> -->
 
 <div class="p-4">
-  <div class="grid grid-cols-1 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     @for (category of repo.categories(); track $index) {
-    <!-- <div class="h-48 rounded-xl"></div> -->
     <div
       role="button"
       [routerLink]="['/categories', category.id]"
@@ -36,11 +35,17 @@
       <div
         class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-tertiary drop-shadow">
+        <p class="text-2xl font-bold text-on-primary drop-shadow">
           {{ category.title }}
         </p>
       </div>
     </div>
+    } @empty {
+    <p
+      class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-xl font-bold text-primary"
+    >
+      No category found.
+    </p>
     }
   </div>
 </div>

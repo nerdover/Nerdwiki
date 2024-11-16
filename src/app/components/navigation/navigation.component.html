@@ -5,9 +5,14 @@
     transparent ? 'bg-primary/60 text-on-primary' : 'bg-surface'
   ]"
 >
-  <div class="flex justify-between items-center gap-4 p-4">
+  <div class="flex justify-between items-center gap-4 p-4 md:px-8">
     <p class="text-2xl font-comfortaa font-bold">nerdwiki</p>
-    <button (click)="openMenuAndLockBody()">
+    <ul class="hidden md:flex items-center gap-4 font-semibold">
+      @for (item of menu; track $index) {
+      <li role="button" [routerLink]="[item.link]">{{ item.name }}</li>
+      }
+    </ul>
+    <button (click)="openMenuAndLockBody()" class="block md:hidden">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 -960 960 960"

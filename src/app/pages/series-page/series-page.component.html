@@ -1,9 +1,17 @@
 @if (series && series.cover) {
-<div class="h-48 lg:h-64">
-  <img
-    [src]="'api/uploads/' + series.cover"
-    class="w-full h-full object-cover object-center"
-  />
+<div class="h-48 lg:h-64 relative">
+  <div class="absolute top-0 left-0 w-full h-full">
+    <img
+      [src]="'api/uploads/' + series.cover"
+      [alt]="series.title"
+      class="w-full h-full object-cover object-center series-cover"
+    />
+  </div>
+  <div class="absolute top-0 left-0 w-full h-full p-4 flex items-end">
+    <p class="text-2xl font-bold text-on-primary drop-shadow series-title">
+      {{ series.title }}
+    </p>
+  </div>
 </div>
 }
 <div class="p-4">
@@ -18,11 +26,18 @@
         seriesLesson.seriesId,
         seriesLesson.id
       ]"
-      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+      class="h-48 p-4 bg-secondary-container relative overflow-hidden"
     >
       <div class="absolute top-0 left-0 w-full h-full">
         @if (seriesLesson.cover) {
         <img
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              seriesLesson,
+              'seriesLessonId',
+              'series-lesson-cover'
+            )
+          "
           class="w-full h-full object-cover object-center"
           [src]="'api/uploads/' + seriesLesson.cover"
           [alt]="seriesLesson.title"
@@ -30,9 +45,18 @@
         }
       </div>
       <div
-        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+        class="absolute top-0 left-0 w-full h-full p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-primary drop-shadow">
+        <p
+          class="text-2xl font-bold text-on-primary drop-shadow"
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              seriesLesson,
+              'seriesLessonId',
+              'series-lesson-title'
+            )
+          "
+        >
           {{ seriesLesson.title }}
         </p>
       </div>

@@ -3,17 +3,18 @@
   <div class="absolute top-0 left-0 w-full h-full">
     <img
       [src]="'/api/uploads/' + lesson.cover"
-      class="w-full h-full object-cover object-center"
+      [alt]="lesson.title"
+      class="w-full h-full object-cover object-center lesson-cover"
     />
   </div>
   <div
-    class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-gradient-to-b from-primary/75 to-primary/0"
+    class="absolute top-0 left-0 w-full h-full flex justify-center items-center"
   >
     <div>
-      <h1 class="text-3xl font-bold text-on-primary drop-shadow">
+      <h1 class="text-3xl font-bold text-on-primary drop-shadow lesson-title">
         {{ lesson.title }}
       </h1>
-      <p class="font-semibold text-on-primary drop-shadow">
+      <p class="font-semibold text-on-primary drop-shadow series-title">
         {{ lesson.categoryTitle }}
       </p>
     </div>

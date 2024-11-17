@@ -1,9 +1,17 @@
 @if (category && category.cover) {
-<div class="h-48 lg:h-64">
-  <img
-    [src]="'api/uploads/' + category.cover"
-    class="w-full h-full object-cover object-center"
-  />
+<div class="h-48 lg:h-64 relative">
+  <div class="absolute top-0 left-0 w-full h-full">
+    <img
+      [src]="'api/uploads/' + category.cover"
+      [alt]="category.title"
+      class="w-full h-full object-cover object-center category-cover"
+    />
+  </div>
+  <div class="absolute top-0 left-0 w-full h-full p-4 flex items-end">
+    <p class="text-2xl font-bold text-on-primary drop-shadow category-title">
+      {{ category.title }}
+    </p>
+  </div>
 </div>
 }
 <div class="flex items-center gap-2 p-4">
@@ -31,19 +39,35 @@
     <div
       role="button"
       [routerLink]="['/categories', lesson.categoryId, 'lessons', lesson.id]"
-      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+      class="h-48 p-4 bg-secondary-container relative overflow-hidden"
     >
       <div class="absolute top-0 left-0 w-full h-full">
         <img
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              lesson,
+              'lessonId',
+              'lesson-cover'
+            )
+          "
           class="w-full h-full object-cover object-center"
           [src]="'api/uploads/' + lesson.cover"
           [alt]="lesson.title"
         />
       </div>
       <div
-        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+        class="absolute top-0 left-0 w-full h-full p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-primary drop-shadow">
+        <p
+          class="text-2xl font-bold text-on-primary drop-shadow"
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              lesson,
+              'lessonId',
+              'lesson-title'
+            )
+          "
+        >
           {{ lesson.title }}
         </p>
       </div>
@@ -64,11 +88,14 @@
     <div
       role="button"
       [routerLink]="['/categories', s.categoryId, 'series', s.id]"
-      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+      class="h-48 p-4 bg-secondary-container relative overflow-hidden"
     >
       <div class="absolute top-0 left-0 w-full h-full">
         @if (s.cover) {
         <img
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(s, 'seriesId', 'series-cover')
+          "
           class="w-full h-full object-cover object-center"
           [src]="'api/uploads/' + s.cover"
           [alt]="s.title"
@@ -76,9 +103,14 @@
         }
       </div>
       <div
-        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+        class="absolute top-0 left-0 w-full h-full p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-primary drop-shadow">
+        <p
+          class="text-2xl font-bold text-on-primary drop-shadow"
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(s, 'seriesId', 'series-title')
+          "
+        >
           {{ s.title }}
         </p>
       </div>

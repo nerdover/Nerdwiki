@@ -23,19 +23,35 @@
     <div
       role="button"
       [routerLink]="['/categories', category.id]"
-      class="h-48 rounded-3xl p-4 bg-secondary-container relative overflow-hidden"
+      class="h-48 p-4 bg-secondary-container relative overflow-hidden"
     >
       <div class="absolute top-0 left-0 w-full h-full">
         <img
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              category,
+              'categoryId',
+              'category-cover'
+            )
+          "
           class="w-full h-full object-cover object-center"
           [src]="'api/uploads/' + category.cover"
           [alt]="category.title"
         />
       </div>
       <div
-        class="absolute top-0 left-0 w-full h-full bg-scrim/25 p-4 flex justify-center items-center"
+        class="absolute top-0 left-0 w-full h-full p-4 flex justify-center items-center"
       >
-        <p class="text-2xl font-bold text-on-primary drop-shadow">
+        <p
+          class="text-2xl font-bold text-on-primary drop-shadow"
+          [style.viewTransitionName]="
+            transitionService.viewTransitionName(
+              category,
+              'categoryId',
+              'category-title'
+            )
+          "
+        >
           {{ category.title }}
         </p>
       </div>

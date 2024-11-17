@@ -8,3 +8,28 @@
 .hide-scrollbar::-webkit-scrollbar {
   @apply size-0;
 }
+
+.category-cover {
+  view-transition-name: category-cover;
+}
+.category-title {
+  view-transition-name: category-title;
+}
+.lesson-cover {
+  view-transition-name: lesson-cover;
+}
+.lesson-title {
+  view-transition-name: lesson-title;
+}
+.series-cover {
+  view-transition-name: series-cover;
+}
+.series-title {
+  view-transition-name: series-title;
+}
+.series-lesson-cover {
+  view-transition-name: series-lesson-cover;
+}
+.series-lesson-title {
+  view-transition-name: series-lesson-title;
+}

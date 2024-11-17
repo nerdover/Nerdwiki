@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Lesson } from '../../core/models/lesson';
 import { Series } from '../../core/models/series';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Category } from '../../core/models/category';
 import { getColorScheme } from '../../core/themes/theme-generator';
+import { CurrentTransitionService } from '../../core/services/current-transition.service';
 
 enum CategoryTab {
   Lessons = 'Lessons',
@@ -19,6 +20,8 @@ enum CategoryTab {
   styleUrl: './category-page.component.scss',
 })
 export class CategoryPageComponent implements OnInit {
+  readonly transitionService = inject(CurrentTransitionService);
+
   currentTab = CategoryTab.Lessons;
 
   get CategoryTab() {

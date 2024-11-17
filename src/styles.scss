@@ -19,11 +19,17 @@ body {
 .category-title {
   view-transition-name: category-title;
 }
+.category-backdrop {
+  view-transition-name: category-backdrop;
+}
 .lesson-cover {
   view-transition-name: lesson-cover;
 }
 .lesson-title {
   view-transition-name: lesson-title;
+}
+.lesson-backdrop {
+  view-transition-name: lesson-backdrop;
 }
 .series-cover {
   view-transition-name: series-cover;
@@ -31,9 +37,15 @@ body {
 .series-title {
   view-transition-name: series-title;
 }
+.series-backdrop {
+  view-transition-name: series-backdrop;
+}
 .series-lesson-cover {
   view-transition-name: series-lesson-cover;
 }
 .series-lesson-title {
   view-transition-name: series-lesson-title;
+}
+.series-lesson-backdrop {
+  view-transition-name: series-lesson-backdrop;
 }

@@ -62,19 +62,25 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     fontFamily: {
-      'comfortaa': ['Comfortaa']
+      comfortaa: ["Comfortaa"],
     },
     extend: {
       colors,
       typography: {
         primary: {
           css: {
-            // "--tw-prose-headings": "var(--primary)",
-            // "--tw-prose-body": "var(--primary)",
-            // "--tw-prose-bold": "var(--primary)",
-            // "--tw-prose-quotes": "var(--primary)",
-            // "--tw-prose-quote-borders": "var(--primary-container)",
-            maxWidth: "100%",
+            "--tw-prose-body": "rgba(var(--primary), 1)",
+            "--tw-prose-headings": "rgba(var(--primary), 1)",
+            "--tw-prose-links": "rgba(var(--primary), 1)",
+            "--tw-prose-bold": "rgba(var(--primary), 1)",
+            "--tw-prose-counters": "rgba(var(--primary), 1)",
+            "--tw-prose-bullets": "rgba(var(--primary), 1)",
+            "--tw-prose-hr": "rgba(var(--primary-container), 1)",
+            "--tw-prose-quotes": "rgba(var(--primary), 1)",
+            "--tw-prose-quote-borders": "rgba(var(--primary-container), 1)",
+            "--tw-prose-code": "rgba(var(--primary), 1)",
+            // "--tw-prose-th-borders": #d1d5db,
+            // "--tw-prose-td-borders": #e5e7eb,
           },
         },
       },

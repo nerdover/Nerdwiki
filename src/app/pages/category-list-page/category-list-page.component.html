@@ -40,7 +40,14 @@
         />
       </div>
       <div
-        class="absolute top-0 left-0 w-full h-full p-4 flex justify-center items-center"
+        [style.viewTransitionName]="
+          transitionService.viewTransitionName(
+            category,
+            'categoryId',
+            'category-backdrop'
+          )
+        "
+        class="absolute top-0 left-0 w-full h-full p-4 bg-scrim/50 flex justify-center items-center"
       >
         <p
           class="text-2xl font-bold text-on-primary drop-shadow"

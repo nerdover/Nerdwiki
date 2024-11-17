@@ -22,14 +22,14 @@
       currentTab === CategoryTab.Lessons ? 'opacity-100' : 'opacity-50'
     "
   >
-    Lesson
+    บทเรียน
   </button>
   <button
     (click)="toSeriesTab()"
     class="flex items-center px-4 py-2 rounded-full bg-secondary text-on-secondary font-semibold"
     [ngClass]="currentTab === CategoryTab.Series ? 'opacity-100' : 'opacity-50'"
   >
-    Series
+    ชุดบทเรียน
   </button>
 </div>
 @if (currentTab === CategoryTab.Lessons) {
@@ -76,7 +76,7 @@
     <p
       class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-xl font-bold text-primary"
     >
-      No lesson found.
+      ไม่พบบทเรียน
     </p>
     }
   </div>
@@ -119,7 +119,7 @@
     <p
       class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-xl font-bold text-primary"
     >
-      No series found.
+      ไม่พบชุดบทเรียน
     </p>
     }
   </div>

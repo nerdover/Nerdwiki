@@ -20,11 +20,11 @@ export class NavigationComponent {
 
   menu = [
     {
-      name: 'Home',
+      name: 'หน้าหลัก',
       link: '/',
     },
     {
-      name: 'Contents',
+      name: 'คลังบทเรียน',
       link: '/categories',
     },
   ];

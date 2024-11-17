@@ -5,6 +5,10 @@
 @import "scss/colors.scss";
 @import "scss/fonts.scss";
 
+body {
+  font-family: "Noto Sans Thai";
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   @apply size-0;
 }

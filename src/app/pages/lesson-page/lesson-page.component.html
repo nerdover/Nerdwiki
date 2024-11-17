@@ -22,4 +22,8 @@
 </div>
 } @if (lesson && lesson.content) {
 <nwk-content-view [content]="lesson.content" />
+} @else {
+<p class="text-center text-xl font-bold text-on-primary drop-shadow">
+  ไม่มีเนื้อหา
+</p>
 }
